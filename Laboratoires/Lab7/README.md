@@ -27,9 +27,9 @@ Ouvrez un terminal à la racine du projet
 
 Lancez :
 
-_\`cd Installation && sudo chmod -R 777 ../Laboratoires/Lab7/ && sudo docker compose up -d\`_
+_\`sudo chmod -R 777 ../Laboratoires/Lab7/ && cd Installation && sudo docker compose up -d\`_
 
-![](https://lh5.googleusercontent.com/_G312KCKFjuYv2g0txYJf2uBIonJRMUcqncIOcCG_v7uYMsnDsUn9ayzNiKxeEkNa_KR2yYsavtW-s1P7ZgVA4KuHxyy7bd0eY8YEWa37fHP968D-VC9GjSbQhke4_yWKdWGYr0eqwZp6xBFF6BcBDw)
+![](https://lh3.googleusercontent.com/VRy_r1lWTyoefBiAOfS7bmWOSU9GcBbXiHpCMxSpXkggg14sb3l90duGGctQIw1f1iRq6ybxhX6D8g4x_kylHk-wwdtJznmQ5gjNKLrqBNLwxoSUQOAVphHSaDC2yKg1y5wlA3kMm31D9bDFmc52nz0)
 
   
 
@@ -40,13 +40,13 @@ Cliquez sur l'icône baleine de Visual studio
 
 Assurez vous que Geoserver soit bien VERT
 
-![](https://lh3.googleusercontent.com/iwBeXCJgk2gFMC5EN8IcUkcK0VTPci9rYh0NcPZI2n0raKBQlmiIbzSxGgnPcBbtO7tbhpKC1oyYUoZ6nwYZIxrysm-GmlaRI_hw-xgBPqDNiKNQZLmW18cABYO6N7jH3HEZxSMzyjWL0Ofe1MAKZZo)
+![](https://lh4.googleusercontent.com/7jBVkxWi5aUa7WjqA_n2j8zTMXBTXWY26u12NtCjVaeNfKR_jqK3Tq6tGdEO9jQrNrvOJ7B6wUjPQpw1jVmcET7uY9Y2xgb9o34bvPozh0lqY9Vv4ZmMmcA99l2FwUdDZKf4uZksa4ovi1u185GD7C4)
 
 Vous avez maintenant  un nouveau répertoire GeoserverData
 
 Copier - coller le répertoire Data dans GeoserverData
 
-![](https://lh4.googleusercontent.com/rPDEYDam0w5_oZq4JKO0A2VTl2Fkx8J5KsQV2YwGspJufZ8A88emCyZvuy4u2DDQzVjCQwLx-SQLtj4taNSRTdKBXH3in-EIQJpdpBjfjh7W4bHim70erpbI0ayhlejDOasufxeYlYBP1WtURJ1cxwY)
+![](https://lh5.googleusercontent.com/h-CdHCKmkd0igQepE3Hx1mifSSLhyg79MG3x1iBm_mdcL_pafb3dgQXKDGq-VqjvaiyuzQlhKbP0vFtP0tSZr4Nz_fFLd0GqL5iKmBfkhBEbOKUfYePw5nQhPA5DwRdv4Va5i_5n1JcfzS-sqwq9i_0)
 
   
 
@@ -55,39 +55,39 @@ Ouvrez un navigateur web à l’adresse suivante : \`<http://localhost:8080/geos
 
 Connectez vous en tant qu’administrateur : admin/geoserver
 
-![](https://lh6.googleusercontent.com/9BZDfKMN9sLozAzub6dOpXRjfjNJuqgw1z0eyIWb57l1tcpPaDPH_33_TwPqPX6G2fvM8_Py_K0HHVKqBrRCQdbZINkX6kDhGOdiYTpjyCklAtislaiYA_ArB0Z48dbXbPgco1EUJE66Co_0w3QHBBg)
+![](https://lh6.googleusercontent.com/43hxB63zjabf5Ri8T0YEOH0GwcUdBS9PGDjDvfK_Ly4I7tkAcHzC2rpPfeLWmono_gcYZOYsXvaUzCveDcwCQvEuGmLM7m_Lfy4UZ7QYeiQ3t7vU9gzBcAgWcUcsl54ZR3vl2OqTkfyfbaB2c0AMwk4)
 
 Bienvenu dans l’interface d’administration
 
 Ajoutez un **Workspace **: geo7630
 
-![](https://lh3.googleusercontent.com/dAoKq7MDeaAm8TEd2uNPH5AxH_zbxbaPIXvj2b-reZExTiIQQcel_hJLN4O8rOyz_joFVuztw4l0mPcf2HoitFkgvWCj8-J0FAYsIuc8U0iYjFj13HfaCkaU2Mzq-wh6LTaQqP8R4wsGEc1gzuSpQS4)
+![](https://lh6.googleusercontent.com/LtvzjISzzRZ441Wy6JN3ZhEOKAo3ejwhRhKseeiL2a9GqKi3I3_ez1H7Uwg9vi0p285Pes8psymNk1KbA5o3Yao4Ts0T0ff_Madz_K2mNwX4iJV5fZhhZCGBj-OE0TfOrbJoXAjUsDd_RjGQXrZRw-4)
 
 Maintenant activez les services WMS et WFS pour votre WORKSPACE
 
-![](https://lh3.googleusercontent.com/5Y50E5C3tJbvfX_izvvdCd8KnIXu4hPTT7wV1c3neW-Ki4IQBjfEHEFBgMYQAMGRwHqFN1FFKm7vkN3ofb15mcRWI_ZZ-mzlzLATammdvJVeromY7qB5mD-W0ts_yFzHUjYSAlza6Daix75nNjMOjYw)
+![](https://lh3.googleusercontent.com/76RMO_VU6WJpBEctZpnBNyVaAqD0f4V9X-gau1meQzEhODFhcDZLI37SPsDUrvWOvPf1iHNzJ2eJfPqdH6bxKgcbDpSdlWEiDyZG-9HTcH1T18h6ieZaV788b0KYV-UAMyQLSMUjLbOSKXWWgsoCfYI)
 
 
 ## Chargement d’une orthophoto dans Geoserver
 
 Ajoutez un nouveau “store” de type Raster Data Source – WorldImage
 
-![](https://lh4.googleusercontent.com/SKtIct8XgGu6AqozbtZe8CBxtU6ke2oPNuyge8dxO3nlwQDnm7EA5od74lpqJC_upMlH7dr60kb1I6nBr6vKh0zAiGoG36qdNgpky7K8uA98KHSLV1asTh7gfB6ujPWiAKIO5Z0Q7jvs5AofLOztwpI)
+![](https://lh3.googleusercontent.com/WGRGL7QFsOiZ-o_R1pPsMEpS80ySIB6PtbnmHxXkwd4z8Ct9q_iKE6Sf2s_CX2BRi9iq1E0FGtZbr-zFg4rH83qUj2j7gSGXPv7PGAk_yfQVI5GJcAaqNYxo6hFOMgGT6EcXLu1gg8GpWbm10rDtRrM)
 
   
 
 
-![](https://lh5.googleusercontent.com/grgSnho0I3wvWAWQVO0Mq3fCa2QN1oUdTGYC4-f7o1ktSRVC2W53Kx-UXVaMjF4gI8A1MLFkJoMkJahMbV1yckKAYUMngKtm7WZsjQgW21Dkfeb0lKMxXq9XlCVO534CjPVDmE35W4moEdn97WorZdE)![](https://lh5.googleusercontent.com/fJZkHiDX7_g_znTvUP131XgIymfvhZYvf0GXuSkyK4uYbhbVgcoB8of1qEprs7_JjKQp7nHSTlowUi1b5HGYqsc83gN3XGXoAJWHlIlUKnN-6NS6aXm7XQw6RJjVuSDqnBvwiubZ3j6W5FW5Zmdqoeo)
+![](https://lh4.googleusercontent.com/BVqeD_AWscheB8Oy9wmSj03Tw5RMu3Qbkt_AFUA5c4pIIRXiGVtC5n4HQ_JCtiSLsB5lM36DNIit8sGPoleWvHMVOkiptE-OycD4HhcGOZUmtZpJFn5PdnveSqnR9OStPsxPlyPrKS4NWWMAStElaLo)![](https://lh6.googleusercontent.com/Z3PhMJ4HEqsmtAB07Et-JKFDQG7EPK3SuYQz7w6RSRD1aRxGqSN2ExFeMnWJkf6jaNST0RLRmaVkyrhfefS6hj6NCOtwoihEn0i8wPahJX9fONJWvPlYcUQq56XgiNQGsN2RIK9GwvSUsLf0PwhbCWw)
 
-![](https://lh5.googleusercontent.com/HYw2nTfd8QuuNB6RvA2rMrDBBqG62a0wzoNnCj5nZBgTh7iEZtlEwHo3K9gFPG9ueBm8L0Av5FG42ROx4t8bOllegT4VVxgmDGIp6CUW6xx1j0oQjARZyqN95i6qD4euwXFbqhijrWuUs7RYwHzfTfs)
+![](https://lh4.googleusercontent.com/vYNkN55m0Jz5wNzQZvXQmw1y10r6uNqNq3qP_QyU-dOoNNJ_K3zTRjaFBK88y7qzhcAuziQDWtuUTerDwZjZHs7_ajCCRkF71QroKEy1pLnWGUgwFkCVUeriv7hfXLwUlGubfMDEBd63QZQUL8G5cnk)
 
-![](https://lh5.googleusercontent.com/tH4ruhUqVajTjqBhmK-OOh9RDOJT7tEQD45TpZ0umSl4DlMfyP4u8oRxcwohuo-u5HoXDHkErEEwMMmGpMjP3xaRbHIIFujFOfmtaE70MHADFqh8f_UGVcjngZFpT4VkuX67kiFkWqEMfd36o2lduXs)
+![](https://lh4.googleusercontent.com/PHwupbP5YHj0i__ADXz8XPmd_rg3-_bLabbqYan8WXA2Uwy7KlhsAX9Nx-0pLB0lPqZqgptJlmJgetSPcRmJdDw0S9RVoGxYjYDm0JF2jFyV_GNBmKTgTyl8nN8byFv0_R6dz3CNw7J5TwVhdKk6Oy8)
 
 Cliquez **Publish **pour publier votre nouvelle couche
 
 Dans les propriétés de votre nouvelle couche déclarer la reprojection
 
-![](https://lh4.googleusercontent.com/pS8pGz7FxOX0SPtmRVQhmVlKjhDVrgHrLwCJmPwxVgsJoXm6ktHMQZ7clqWX6JON8lLgweJhotPwF1eRATeMx0UFI4LC2RJ3ooMObWGSqq3tGGLcSQBHNvaTXxjFBeG0wRvnX8WqLPmsKPsKJA1MNzM)
+![](https://lh5.googleusercontent.com/pe8MelirJX04G8BUFMVUPo_v4q1Q4BWXDBqdEPGAynxhSqXORw-Qci6Zt2gXlx__1ImpokuRgD1uiE7pz9iLCI5hM5RHGGx5SnvJEq3l42a6HIVg9y-RwYc33FQCgyE83e3ORkVVfZGVT27pTu7Tcx0)
 
   
   
@@ -97,13 +97,13 @@ Ensuite sauvegardez
 
 Pour valider que le shapefile est maintenant servi correctement par Geoserver allez dans Layer preview
 
-![](https://lh6.googleusercontent.com/3ReepP0SzDwIdYz4jhjVOZrj-Hjv507ac9uIliCk9lB22vTVDm_hOZ49pLIEJ0LqfgCrRPb2b1a1GbUaX4oa_oLnVDY9rwxC70BN7fFW0xDMMbg-IQUBGjSpnFe09Usc-9NcI3SAP-7EfzeDLng1mSM)
+![](https://lh4.googleusercontent.com/E9s9Zm4MapSHrn0wwvDArLj1rz-JezSUwTfHqlC4eSIqSb3Ef0wA6Jxye7D5NZqtKwugWYI2Hfd-9e41Ar_9_RxluQpNW4M9xgWgeAFspf0WQRoCEo4BQfZO4kxiYxAdnzCONfZFvYaQp_LsHdq16Rs)
 
 Cliquez sur OpenLayers 
 
-![](https://lh6.googleusercontent.com/qCBZmIl6Q0qFpeHqzrQeSkApKTQ_It2HY88SgMbQyLvqeFA_dbDlyFT6S_rMyw8JTUGb-sA2HRpH8RF81O7nHTrxRDO1q28m76vAgYF5UNFYFXbXW7a0gOTI3QfV4TCc3h892x13ueW-5bDVrnzAqT8)
+![](https://lh3.googleusercontent.com/6XbWuJMDWUgA9igOegFxQWAUROZ0VzBuGAegv1slNWT185RLBdDOYaOfCjAzhBrtDI0Sn9uJAblUnpSBoRX5kX29KZSZp2GQt2WqAxqhAOcLa-iWJ-6N6DXQ26s1ALGYPZTtmK3qmNPMQ-nKGhNsk2s)
 
-![](https://lh5.googleusercontent.com/VKayV6KHHrozQWqKGls6N21EVShBikSTiZWbs55vODpdh3F5B6jBsRCDKr2Yyjv9HcQkOGFuB-Wl8ZxGo0tiJuWrr2FAXp62_i4sTMvG9_AWOSeh3s0UeHHmE21PeOHecIlpszforOEtdUzwYPPnKMs)
+![](https://lh5.googleusercontent.com/ysds-FXl55FuKkc8cHbfjXddLkSto_fuYj6O8M3b1BhnM2ZzDoyjy5JagMerhAns1tgjztTlCDPVPPQS0FIyBbHXc46axytwjwVe8oSlOJAthrpcGqb4htHQv4TJsU0yMFQpCt5pef0YlJ2QjwCzWEA)
 
   
 
@@ -121,34 +121,34 @@ Chargement d’une table PostGIS vers Geoserver 
 
 Créer un nouveau store de type Vector - PostGIS
 
-![](https://lh4.googleusercontent.com/mHdbxstb-WD_U2ym4Qw113yjYkA_7iYbWqbK6pyd_11eCCC-8e3ty_rNzx20vwtwLgO_S873kiVQwKoBxVAXzXA1QvLejE7Yhsl26IbbhmHhxpOWnxfcqXU6btJAd2LCuv7y_lTNofZQGiqEfuORGbU)
+![](https://lh6.googleusercontent.com/Pj8_ZbCNsrsIAQzYTgG9_cVA6iY_m2oJpYNgT2GreDECvKOCFSy7xj4t0cET7DY7bGl-RbtjkiQ4rwq_1C1knRtArpRt-cdt6ytbnGzfd3UkJ7datxz581n-yCseiiYdNBsimop2TTo2RYPNU5jHrBE)
 
   
   
   
 
 
-![](https://lh4.googleusercontent.com/3V2PXVOldFTzZABPnt-lBOpVucu_MyAyT-cB0lAavHkAJFZQAXQV8VnWAeiSzYzX2ddYKH4cR8eiW7R0S8oYwaPOpWtmwAYX9MVsIBSaPPTLm7qWKTjDPiCOxUR38YnhrdFyhozJhdWOqzHD09KnmiE)
+![](https://lh4.googleusercontent.com/T4hBpf2UGD_BadAKZR0EcGYiPxefn1iV1kxtaEPCrJ4khIHwoCFJeDtVbsyQ8CfKuRIZCwAdZj5iu-RcqYpWnGqzoDQm0dca7uxlz8k1e4ofFcf6RAssgK7AkgQAgq969MTjaeFf6zw99qUPBGPeV7M)
 
 Si vous n’arrivez pas à vous connecter à la bd avec l’adresse IP suivante : 172.18.0.1
 
 Pour la trouver il suffit de faire un click droit sur le container docker (baleine) POSTGIS et choisir INSPECT
 
-![](https://lh3.googleusercontent.com/gWrtjneQHmTD8__CLyxlUmoJTgVx4afeKWlzz3Dxapvfjx-0MGx6uBc9YUfcWhmj295Xy05fsJ-0lrC57XmEui51dv4LxaFC4mFBWp5zhIRsqViV99Y2xc2298OoK0fR8xOTS50nxw5rFJT6ziKItog)
+![](https://lh6.googleusercontent.com/1ujRt_ZyJjOPvXXsJcZA8lJxfBh2YkmFClBu1i6fqWoU-hsPJZJC39opfL3eG76619f2av4vOxvA5PPHPokOdxNCZh9n5ZYAz4u8GEr17Sys6wsItsptB7MsD9Wl6yZyUzutXPWd2eKB_xxSVw03geQ)
 
 Chercher pour GATEWAY vers la fin du code vous devriez voir un GATEWAY c’est cette adresse IP qu’il faut fournir à Geoserver : 172.18.0.1
 
-![](https://lh6.googleusercontent.com/D1AI_Tymd5XPMvz7VXaIfR5QOjzsucwdsIqxSiME3L0Qjiyhp0iAPSpkbfhMxe58vYvRX0aELei9nC8QUJMDf5fN-1Zd5Ev5HjCS_-B7of41wYt36KgFgyEeE3esqzlXViV9z5kwPDPi1u9QbcxfaVQ)
+![](https://lh4.googleusercontent.com/DmDcij1zjo7wGQBUOZTM4VdohvPy6Qp2jHsrJ1-J-JxSHMvFKby7AxuMOLmL2th1teLxy8_veG33cGKEAAuJ3oYQWQXw7OVSIa_FqyBiprE4xKkNd6XEmZWQ0wh2LHqhXB_ZdE0T1KLzO4M8XelU8NM)
 
 Ajoutez un nouveau layer issue de votre bd postgis
 
 Choisissez PostGISDB
 
-![](https://lh3.googleusercontent.com/MH5ij_i5JlaWS9sMsnJ82IB9KZOruHOeh4FTedXK6zRg8jXe6roBdEcIRjX9yuQsrd-J8CbBlBw4A3nbGmM9etzDQXwe42J0PNf63hK-huLHfx0OqTp-ncIsuBtDi7Zq4nBTd4hXSfkmKx-JeOojJnI)
+![](https://lh6.googleusercontent.com/X111y75uya6Tb-VLkd743vFJBe60hgycbrSuiWZGhlN0Aot5aMR9pkOMNkpMmEfrH7UdH4ZBflIpdX6t9p8RTd3uJyL2zyPeQfzIHGLHvOD19VFoC8X38QhyCwb6ZQ_bThdvzLrkldfBNUGMgI-HqYg)
 
 Enfin publiez la table de votre choix
 
-![](https://lh6.googleusercontent.com/301Yrt-Jppo2Bx8uB6X41kbNPESuaZ28atsYRfpsrwSV8dJXhdPAHpRbO1T5-Z8vZ_zhfQdQ8U9AJBwbHQJ8Al46Gl9qVvoAVLqeN0MFTsDsXeSuO-SZC6ZC8jktyH2B4EG147WJMEP8WSP0jlVoKeY)
+![](https://lh4.googleusercontent.com/5L5oI3Cj8J_H_sk_ZVpI0jK16v-xkGMNh7mCMKQ4poqhbZmkwVZhd6X7fzRdK6yVmM1xOR03Bx2SZsC5sI4x8DEXHoAkm9TEP_myoVPsJyM_nO_aS-smZjOW_eBsKXX9hVGrL7v7nWB7NEDYk_ZpQHs)
 
 
 ## Création d’évènements pour ajouter un WMS ou WFS dynamiquement dans une application MaplibreGL
@@ -174,7 +174,7 @@ Ajouter une nouvelle fonction qui va vous permettre d’ajouter une nouvelle sou
 
 3 - votre source doit pointer vers un WFS servi par Geoserver voir explication données pendant le cours pour obtenir facilement l’url , sinon : ex 
 
-![](https://lh6.googleusercontent.com/gEuxP8gDA3t1foYWcUXR0Aw0jnd29sCuPOK_HAO6Hr9K7pUc8kFZkMB39bGni9Kh0nUeQFsqcOM4QcXLNCedd_qY8_7rtGSWmcQKG-7uOC2AKvHOyOTIP4aXCHOf3mdHd_c3BzPHp6QB6qyfMcdRn1k)
+![](https://lh3.googleusercontent.com/OFlpn-iK8TN7dOr4OPp0ggFeqNLogMaSZ1w_j3t7LQtsKtMs29FSPzV_7Y4urPGsYsHChzL3Gq413tBvG2SjNnDUa7i45mr-N0c6qd7tC0nIMz836TV7cOYEIeVzciYo7dJIiLVmuvTque_ylRvTjTA)
 
 4 - votre fonction doit ajouter un layer (map.addLayer(configuration)) ([doc](https://maplibre.org/maplibre-gl-js-docs/api/map/#map#addlayer)) 
 
@@ -188,7 +188,7 @@ Ajouter une nouvelle fonction (différente de la précédente) qui va vous perme
 
 3 - votre source doit pointer vers un WMS servi par Geoserver voir explication données pendant le cours pour obtenir facilement l’url , sinon : ex 
 
-![](https://lh6.googleusercontent.com/Zr6u9H5GyjAa8umV6h5JdzQtVz2w_Och4a_QTReTDjGDBTgWseMwD4mTOLN4QP1P5GsREQrQfZbhMqLrMABeJpKYxnXGf_TmZQFyONF4cDo9kQXl-eR6bJruIOPlGBFchP1mlkUtsq5ZBbMUsJDCYa0)
+![](https://lh5.googleusercontent.com/R0vhFxiP5ttRjmOYnC8M_Klvyg3_q52xqXx-LIfw5-sq5bEqYkiKtv0FQlh8c1X6s70mKiYdo1whVBbWnkkmiHZH_rOukiGpdqzIy8m1c5gqHGZ8l1cs6N18mbrLsV2_tjbnyGZKqFesCb6rhl9MW28)
 
 Assurez vous que vous avez bien 2 fonctions javascript qui écoute vos boutons avec vos nouveaux identifiant (comme dans le Lab6)
 
@@ -196,10 +196,10 @@ Assurez-vous que vos fonctions javascript déclenchent bien les bonnes fonctions
 
 Maintenant lancez votre fichier HTML local Lab7.html
 
-![](https://lh6.googleusercontent.com/_JyTQxic-2suTZJ06kSLHRUx_yHstPptNp0JpFxwziIi2PAlFJkPg-bxF2lT1ITwxLTio1CtUTWsOqEXccpM37Jtm0TXZNkxjGQ2vnpGb0U1CgvSkCktU49gp4r59n0Xz8osILffjeEGLyPZ8DB1koo)
+![](https://lh4.googleusercontent.com/3CZCZh_VrwjEFCTydlYYKldUp-VZHpsM8xix1u0vVdPKD2dcuc7fuMYC4UsgrgrPd_1X4XDbvl5vlQwryR91l6bB6MBL9Wx6rg7i2sBL5xpo2IxYNd3pZLQ2mpCL7Epzze-dk9t3JT3UsLspv7obYzI)
 
 Lorsque vous cliquez sur le bouton WMS cela devrait charger l’image aérienne
 
 Lorsque vous cliquez sur le bouton WFS cela devrait charger le WFS en format GeoJSON
 
-![](https://lh6.googleusercontent.com/VGU8dy1DHFqUOe82N4A0tSOEYruK5uOVbjAUWtC7MfjhUSf5dlRXYRuuaALnnX1nBgLUeIqfXo0VF4fF3vOM18nvc3sqbUtcJrfFJfPvj110SQxe5p1n-Xg82aovMJbih68jGojcw9Q6L-Qxs9PxY-k)
+![](https://lh3.googleusercontent.com/xd4Qbjjp1hlta_Mz66SSO25_4w84_G4_Uym1uwxlgyuHBEFhfwMtKYT87RHji1cNdBEDfOfFmZa-M2vLekMIQXl_PzqAtaa0SQ1wVA3vqrT4i9keOluahiUckCYwPLvImoZqtkT9u402kS6pVFtvmx8)
