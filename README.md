@@ -1,7 +1,5 @@
 # GEO7630 - Intégration et visualisation de données géographiques
- test
- test2
- test3
+
   Ce dépot va vous permettre d'installer une stack logicielle complète comprenant :
   - Un environnement de développement intégré **VS Code** 
   - Une base de données **Postgresql 14 + Postgis 3.2**

@@ -10,34 +10,39 @@ services:
     - ./create_postgres_stack.sql:/docker-entrypoint-initdb.d/create_postgres_stack.sql
     - pgdata:/var/lib/postgresql/data
     restart: always
-  pg_tileserv:
-    image: "pramsey/pg_tileserv:latest"
-    ports:
-    - 8801:7800
-    environment:
-    - DATABASE_URL=${DATABASE_URL_GEO7630}
-    volumes:
-    - ./pg_tileserv.toml:/etc/pg_tileserv.toml
-    depends_on:
-    - "pg"
-    restart: always
-  pg_featureserv:
-    image: "pramsey/pg_featureserv:latest"
-    ports:
-    - 9000:9000
-    environment:
-    # CHANGE connection string from .env file
-    - DATABASE_URL=${DATABASE_URL_GEO7630}
-    depends_on:
-    - "pg"
-    restart: always
+  # pg_tileserv:
+  #   image: "pramsey/pg_tileserv:latest"
+  #   ports:
+  #   - 8801:7800
+  #   environment:
+  #   - DATABASE_URL=${DATABASE_URL_GEO7630}
+  #   volumes:
+  #   - ./pg_tileserv.toml:/etc/pg_tileserv.toml
+  #   depends_on:
+  #   - "pg"
+  #   restart: always
+  # pg_featureserv:
+  #   image: "pramsey/pg_featureserv:latest"
+  #   ports:
+  #   - 9000:9000
+  #   environment:
+  #   # CHANGE connection string from .env file
+  #   - DATABASE_URL=${DATABASE_URL_GEO7630}
+  #   depends_on:
+  #   - "pg"
+  #   restart: always
   geoserver:
       image: geosolutionsit/geoserver
+      user: root
       ports:
       - 8080:8080
       environment:
       - INSTALL_EXTENSIONS=true
       - STABLE_EXTENSIONS="PGRaster"
+      volumes:
+      - ./web.xml:/usr/local/tomcat/webapps/geoserver/WEB-INF/web.xml
+      - ../Laboratoires/Lab7/geoserverData:/var/geoserver/datadir
+      # - ./catalina.xml:/usr/local/tomcat/conf/web.xml
+      restart: always
 volumes:
   pgdata:
-

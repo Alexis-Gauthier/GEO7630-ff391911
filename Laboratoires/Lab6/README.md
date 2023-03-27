@@ -1,4 +1,4 @@
-Laboratoire 9 - GEO7630
+Laboratoire 6 - GEO7630
 
 
 # Prérequis
