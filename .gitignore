@@ -1,8 +1,14 @@
 .env
 .log
+.shp
+.shx
+.dbf
+.prj
+.cpg
 Laboratoires/Lab2/data/*
 Laboratoires/Lab3/data/*
 Laboratoires/Lab3/results/*.json
+Laboratoires/Lab7/geoserverData/*
 *.recover
 *.log
 *.zip
