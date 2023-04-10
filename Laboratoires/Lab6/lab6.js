@@ -79,7 +79,6 @@ function handleFileSelect(evt) {
     // Cette fonction permet de mettre le futur geojson en memoire en tant que texte
     reader.readAsText(file, 'UTF-8');
 }
-
 // Ici on initialise la fonction qui va nous permettre de zoomer sur notre geojson
 function zoomToGeoJSON () {
     // L'objet map expose une methode qui permet de zoomer sur une entite geographique
