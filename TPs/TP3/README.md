@@ -1,4 +1,13 @@
+TRAVAIL PRATIQUE 3 - _GEO7630_
+
+CRÉE PAR _ALEXIS-RAPHAEL GAUTHIER_
+
+***
+
 Lien URL pour accéder au projet: https://www.arcgis.com/apps/dashboards/0a2cb4b5372541ba9a4e796fd7b21f73
+***
+
+PS : Lien pour accéder au projet par PC (1280 x 800), Tablette (600 x 1024) et Mobile (360 x 640) : https://experience.arcgis.com/experience/b53975eeba3946b090b6c7f079e23adb/ 
 
 ***
 **Description des intentions du travail**
