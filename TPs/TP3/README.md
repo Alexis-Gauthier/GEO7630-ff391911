@@ -1,3 +1,6 @@
+Lien URL pour accéder au projet: https://www.arcgis.com/apps/dashboards/0a2cb4b5372541ba9a4e796fd7b21f73
+
+***
 **Description des intentions du travail**
 
 Dans le cadre de ce travail, il est question de développer une application web sur un seul type d’acte criminel et sur une petite zone géographique. Ceci a pour objectif de réaliser une « preuve de concept » afin de prouver que l'application fonctionne comme prévu avant d'élargir l'échelle de l'application et de la mettre en production complète. Ainsi, il a été décidé de sélectionner uniquement le type de crime « vol dans / sur véhicule à moteur » pour l’arrondissement « Ville-Marie ». Ce désir d’étudier cet enjeu de sécurité publique provient de la multiplication au mois de janvier 2023 de publications sur la page Facebook « Centre-Sud MON Quartier » concernant des vols dans des voitures. En effet, les photos de fenêtres de voiture brisées étaient devenues monnaie courante en ce début d’année, alors qu’elles semblent avoir diminué depuis février.
