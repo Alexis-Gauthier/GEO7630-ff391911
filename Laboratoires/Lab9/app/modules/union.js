@@ -79,6 +79,25 @@ function union() {
         const hexgrid = turf.hexGrid(bbox, cellSide, options);
         // Compter le nombre de points dans chaque cellule de la grille
         const joined = countPointsInPolygons(randomPoints, hexgrid)
+        map.addSource('grid-source', {
+            type: "geojson",
+            data: countPointsInPolygons(randomPoints, hexgrid)
+  
+        })
+  
+        map.addLayer({
+            id: 'joined',
+            type: 'fill',
+            source: 'grid-source',
+            paint: {
+                "fill-color": {
+                    property: 'pointCount',
+                    stops: [[0, '#f3e79b'], [3, '#fac484'], [5, '#eb7f86'], [8, '#ce6693'], [10, '#a059a0']]
+                    // #f3e79b,#fac484,#f8a07e,#eb7f86,#ce6693,#a059a0,#5c53a5
+                },
+                "fill-opacity": 0.5
+            }
+        })
     }
 }
 
