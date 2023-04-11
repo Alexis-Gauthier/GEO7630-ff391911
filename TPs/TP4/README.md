@@ -25,6 +25,8 @@ TP4 - Développement d’une application web et diffusion des données_ (Open So
    2. Présentation vulgarisée et interactive de votre application
 
       1. Cela p-e une video pré-enregistrée.
+      
+6. Le site doit être déployé dans github pages comme vu dans en classe
 
 
 # Grille d’évaluation
