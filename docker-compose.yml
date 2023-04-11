@@ -8,7 +8,7 @@ services:
     - POSTGRES_PASSWORD=password
     volumes:
     - ./create_postgres_stack.sql:/docker-entrypoint-initdb.d/create_postgres_stack.sql
-    - pgdata:/var/lib/postgresql/data
+    - alexis:/var/lib/postgresql/data
     restart: always
   pg_tileserv:
     image: "pramsey/pg_tileserv:latest"
@@ -40,7 +40,7 @@ services:
       - STABLE_EXTENSIONS="PGRaster"
       volumes:
       - ./web.xml:/usr/local/tomcat/webapps/geoserver/WEB-INF/web.xml
-      - ../Laboratoires/Lab7/geoserverData:/var/geoserver/datadir
+      - ./Laboratoires/Lab7/geoserverData:/var/geoserver/datadir
       restart: always
   server-web:
     image: nginx
@@ -49,5 +49,4 @@ services:
     volumes:
       - ./:/usr/share/nginx/html
 volumes:
-  pgdata:
-    name: pgdata
+  alexis:

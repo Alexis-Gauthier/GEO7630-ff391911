@@ -1,10 +1,9 @@
-.env
-.log
-.shp
-.shx
-.dbf
-.prj
-.cpg
+*.log
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
 Laboratoires/Lab2/data/*
 Laboratoires/Lab3/data/*
 Laboratoires/Lab3/results/*.json

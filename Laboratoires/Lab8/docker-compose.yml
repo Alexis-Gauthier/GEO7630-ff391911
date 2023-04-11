@@ -1,47 +1,37 @@
 version: "3.4"
 services:
-  pg:
+  pg_lab8:
     image: "postgis/postgis:14-3.3"
     ports:
-    - 8433:5432
+    - 8434:5432
     environment: 
     - POSTGRES_PASSWORD=password
     volumes:
     - ./create_postgres_stack.sql:/docker-entrypoint-initdb.d/create_postgres_stack.sql
     - pgdata:/var/lib/postgresql/data
     restart: always
+  ogr:
+    image: ghcr.io/osgeo/gdal:alpine-small-latest
+    volumes:
+      - ./data:/data
   pg_tileserv:
     image: "pramsey/pg_tileserv:latest"
     ports:
     - 8801:7800
     environment:
-    - DATABASE_URL=postgresql://admin_geo:password@pg/geo7630
-    volumes:
-    - ./pg_tileserv.toml:/etc/pg_tileserv.toml
+    - DATABASE_URL=postgresql://admin_geo:password@pg_lab8/geo7630
     depends_on:
-    - "pg"
+    - "pg_lab8"
     restart: always
   pg_featureserv:
     image: "pramsey/pg_featureserv:latest"
     ports:
     - 9000:9000
     environment:
-    # CHANGE connection string from .env file
-    - DATABASE_URL=postgresql://admin_geo:password@pg/geo7630
+    - DATABASE_URL=postgresql://admin_geo:password@pg_lab8/geo7630
     depends_on:
-    - "pg"
+    - "pg_lab8"
     restart: always
-  geoserver:
-      image: geosolutionsit/geoserver
-      ports:
-      - 8080:8080
-      environment:
-      - INSTALL_EXTENSIONS=true
-      - STABLE_EXTENSIONS="PGRaster"
-      volumes:
-      - ./web.xml:/usr/local/tomcat/webapps/geoserver/WEB-INF/web.xml
-      - ../Laboratoires/Lab7/geoserverData:/var/geoserver/datadir
-      restart: always
   server-web:
     image: nginx
     ports:
@@ -50,4 +40,6 @@ services:
       - ./:/usr/share/nginx/html
 volumes:
   pgdata:
-    name: pgdata
+    name: installation_pgdata
+    external: true
+     
