@@ -85,23 +85,48 @@
 
       <div id="boite"> 
         <h4>Clusters</h4>
-        <!--INSEREZ ICI UN BOUTON pour ajouter une couche de clusters-->
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <button id="generateClusters" class="btn btn-dark" type="button">Generate Clusters</button>
+          </div>
+        </div>
       </div>
 
       <div id="boite"> 
         <h4>Heatmap</h4>
-        <!--INSEREZ ICI UN BOUTON pour ajouter une couche Heatmap-->
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <button id="generateHeatmap" class="btn btn-dark" type="button">Generate Clusters</button>
+          </div>
+        </div>
       </div>
 
       <div id="boite"> 
         <h4>3D</h4>
-       <!--INSEREZ ICI UN BOUTON pour ajouter une couche de 3D-->
+        <div class="input-group mb-3">
+          <div class="input-group-append">
+            <button id="generate3D" class="btn btn-dark" type="button">Generate 3D</button>
+          </div>
+        </div>
       </div>
 
+      <!-- <div id="boite"> 
+        <h4>Heatmap</h4>
+        <label for="customRange1" class="form-label">400</label>
+        <input type="range" class="form-range" id="customRange1">
+        <label for="customRange1" class="form-label">600</label>
+      </div> 
+      <div id="boite"> 
+        <h4>Heatmap</h4>
+        <label for="customRange1" class="form-label">400</label>
+        <input type="range" class="form-range" id="customRange1">
+        <label for="customRange1" class="form-label">600</label>
+      </div>  -->
     </div>
 
     <div id="menu2">
       <div id="boite">
+
 
         <div class="input-group mb-3">
           <div class="input-group-append">
@@ -141,8 +166,10 @@
   <script type='text/javascript' src="./modules/layerHandler.js"></script>
   <script type='text/javascript' src="./modules/dynamicCount.js"></script>
   <script type='text/javascript' src="./modules/randomPoints.js"></script>
+  <script type='text/javascript' src="./modules/clusters.js"></script>
+  <script type='text/javascript' src="./modules/heatmap.js"></script>
   <script type='text/javascript' src="./modules/gridMaker.js"></script>
-  <!--ICI les scripts heatmap, clusters et 3D-->
+  <script type='text/javascript' src="./modules/3D.js"></script>
 
   <!-- ================================================== -->
 
