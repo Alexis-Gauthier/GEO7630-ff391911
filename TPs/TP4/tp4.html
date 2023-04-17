@@ -2,32 +2,32 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Ma carte interactive</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"  />  
-    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <title>Ma carte interactive pour le TP4</title>
+    <!-- lien vers le fichier CSS -->
+    <link rel="stylesheet" type="text/css" href="tp4.css">
   </head>
   <body>
-    <!--Ici on injecte une div qui ne servira a injecter notre carte -->
+    <!--Ici on injecte une div qui ne servira a injecter la carte -->
     <div id="map"></div>
   
-    <!--Ici on injecte une div qui servira de conteneur pour notre menu -->
+    <!--Ici on injecte une div qui servira de conteneur pour le menu -->
     <div id="menu">
-      <!--Ici on injecte une div qui servira de conteneur enfant pour notre menu -->
+      <!--Ici on injecte une div qui servira de conteneur enfant pour le menu -->
       <div id="boite">
         
         <h1>Titre</h1>
         <h2>Sous-titre</h2>
         
-        <!--Ici on injecte une div qui servira de conteneur pour notre bouton de chargement -->
+        <!--Ici on injecte une div qui servira de conteneur pour le bouton de chargement -->
         <div id=bouton1>
            <!--Ici on injecte un INPUT de type file qui servira de bouton pour charger le fichier -->
-           <!--Le bouton a une propriete accept qui nous permet de speficier  et forcer le type de fichier qui peut etre injecter,
-             dans notre cas GeoJSON-->
+           <!--Le bouton a une propriete accept qui permet de speficier et de forcer le type de fichier qui peut etre injecter,
+             dans ce cas-ci GeoJSON-->
           <input type="file" id="file" name="file"
             accept="application/geo+json,application/vnd.geo+json,.geojson,application/json" />
         </div>
   
-        <!--Ici on injecte une div qui servira de conteneur enfant pour notre bouton de zoom -->
+        <!--Ici on injecte une div qui servira de conteneur enfant pour le bouton de zoom -->
         <div id=bouton2>
           <button id=zoomto>Zoomer données</button>
         </div>
@@ -39,7 +39,8 @@
   
       </div>
     </div>
+
+    <!-- lien vers fichier JS -->
+    <script src="tp4.js"></script>
   </body>
 </html>
-
-
