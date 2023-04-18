@@ -4,54 +4,40 @@
   <meta charset='utf-8' />
   <title>Ma carte Mapbox</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
-  <style>
-    #map {
-      height: 400px;
-    }
-  </style>
+  <link href='tp4.css' rel='stylesheet' />
 </head>
 <body>
-  <div id='map'></div>
-  <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleGlzLWdhdXRoaWVyIiwiYSI6ImNsZ2xoOGFqaDAzenozaG1lMXYybHkwbzMifQ.pT4pVZwsoYraglgAT3YLrg';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-73.5673, 45.5017],
-      zoom: 12
-    });
 
-    map.on('load', function() {
-      map.addSource('data_vol', {
-        type: 'geojson',
-        data: 'vol_dans_char_2023.geojson'
-      });
+  <!--Ici on injecte une div qui servira de conteneur pour le menu -->
+  <div id="menu">
+    <!--Ici on injecte une div qui servira de conteneur enfant pour le menu -->
+    <div id="boite">
+      
+      <h1>Vols dans (ou sur) véhicule à moteur</h1>
+      <h2>Ville-Marie, Montréal, 2023</h2>
+      
 
-      map.addLayer({
-        id: 'points',
-        type: 'circle',
-        source: 'data_vol',
-        paint: {
-          'circle-radius': 6,
-          'circle-color': '#B42222'
-        },
-        filter: ['==', '$type', 'Point']
-      });
+      <!--Ici on injecte une div qui servira de conteneur enfant pour le bouton de zoom -->
+      <div id=bouton2>
+        <button id=zoomto>Zoomer sur les données</button>
+      </div>
 
-      map.addLayer({
-        id: 'polygones',
-        type: 'fill',
-        source: 'data_vol',
-        paint: {
-          'fill-color': '#B42222',
-          'fill-opacity': 0.5,
-          'fill-outline-color': '#B42222'
-        },
-        filter: ['==', '$type', 'Polygon']
-      });
-    });
-  </script>
+      
+
+    </div>
+
+      <!--Ici on injecte une div qui ne servira a injecter notre carte -->
+      <div id='map'></div>
+    
+  </div>
+
+  
+
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+  <script src='tp4.js'></script>
+
 </body>
 </html>

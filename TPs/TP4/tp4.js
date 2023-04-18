@@ -1,43 +1,53 @@
-map.on('load', function() {
-  map.addSource('data_vol', {
-    type: 'geojson',
-    data: 'vol_dans_char_2023.geojson'
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleGlzLWdhdXRoaWVyIiwiYSI6ImNsZ2xoOGFqaDAzenozaG1lMXYybHkwbzMifQ.pT4pVZwsoYraglgAT3YLrg';
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [-73.5673, 45.5017],
+  zoom: 12
+});
+
+map.on("load", () => {
+  // This code runs once the base style has finished loading.
+
+  map.addSource("vol_data", {
+    type: "geojson",
+    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/vol_dans_char_2023/FeatureServer/0/query?f=pgeojson&where=1=1",
   });
 
   map.addLayer({
-    id: 'points',
-    type: 'circle',
-    source: 'data_vol',
-    paint: {
-      'circle-radius': 6,
-      'circle-color': '#B42222'
-    },
-    filter: ['==', '$type', 'Point']
+    id: "vol_data_cercles",
+    type: "circle",
+    source: "vol_data",
   });
 
   map.addLayer({
-    id: 'polygones',
-    type: 'fill',
-    source: 'data_vol',
-    paint: {
-      'fill-color': '#B42222',
-      'fill-opacity': 0.5,
-      'fill-outline-color': '#B42222'
+    id: "vol_data_cluster_count",
+    type: "symbol",
+    source: "vol_data",
+    layout: {
+      "text-font": ["Arial Bold"],
+      "text-field": ["get", "point_count"],
+      "text-offset": [0, 0.1] // move the label vertically downwards slightly to improve centering
     },
-    filter: ['==', '$type', 'Polygon']
+    paint: {
+      "text-color": "white"
+    }
   });
 
-  // On crée la fonction de chargement de fichier
-  function chargerFichier(event) {
-    var input = event.target;
-    var reader = new FileReader();
-    reader.onload = function(){
-      var text = reader.result;
-      map.getSource('data_vol').setData(JSON.parse(text));
-    };
-    reader.readAsText(input.files[0]);
-  }
-  
+  map.addSource("limites", {
+    type: "geojson",
+    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/limite_ville_marie/FeatureServer/0/query?f=pgeojson&where=1=1",
+  });
+
+  map.addLayer({
+    id: "limites_line",
+    type: "line",
+    source: "limites",
+  });
+
+});
+
+      
   // On crée la fonction de zoom sur les données
   function zoomerDonnees() {
     var features = map.querySourceFeatures('data_vol', { sourceLayer: 'polygones' });
@@ -59,13 +69,10 @@ map.on('load', function() {
       stops: stops
     });
   }
-});
 
-// On lie le bouton de chargement de fichier à la fonction de chargement de fichier
-document.getElementById('file').addEventListener('change', chargerFichier);
+
+
 
 // On lie le bouton de zoom à la fonction de zoom sur les données
 document.getElementById('zoomto').addEventListener('click', zoomerDonnees);
 
-// On lie le bouton de colorisation à la fonction de colorisation des données
-document.getElementById('colorier').addEventListener('click', colorierDonnees);

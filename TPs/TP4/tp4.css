@@ -1,28 +1,43 @@
-#map {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
+body {
+  text-align: center;
+}
+
+#content {
+  margin: 0 auto; /* la valeur "auto" centre le bloc horizontalement */
 }
 
 #menu {
-    background-color: #333;
-    color: white;
-  }
-  
-  #boite {
-    padding: 20px;
-  }
-  
-  #boite :not(h1) {
-    color: white;
-  }
-  
-  #boite h1 {
-    color: rgb(255, 0, 0);
-  }
+  background: linear-gradient(to bottom, #333 32%, transparent 25%, transparent 100%, #666 100%);
+}
 
-  
-  #boite button {
-    color: black;
-  }
+#menu li {
+  display: inline-block;
+  padding: 10px;
+}
+
+#menu a {
+  color: white;
+}
+
+#boite {
+  padding: 20px;
+}
+
+#boite :not(h1) {
+  color: white;
+}
+
+#boite h1 {
+  color: rgb(255, 0, 0);
+}
+
+#boite button {
+  color: black;
+}
+
+#map {
+  left: 25%;
+  right: 25%;
+  width: 50%;
+  height: 400px;
+}
