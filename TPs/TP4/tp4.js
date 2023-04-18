@@ -11,8 +11,11 @@ map.on("load", () => {
 
   map.addSource("vol_data", {
     type: "geojson",
-    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/vol_dans_char_2023/FeatureServer/0/query?f=pgeojson&where=1=1",
+    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/vol_dans_char_2023/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*",
   });
+
+  
+
 
   map.addLayer({
     id: "vol_data_cercles",
