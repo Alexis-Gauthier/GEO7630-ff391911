@@ -2,8 +2,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleGlzLWdhdXRoaWVyIiwiYSI6ImNsZ2xoOGFqaDAze
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
-  center: [-73.5673, 45.5017],
-  zoom: 12
+  center: [-73.5673, 45.515],
+  zoom: 12.5
 });
 
 map.on("load", () => {
@@ -12,19 +12,22 @@ map.on("load", () => {
   map.addSource("vol_data", {
     type: "geojson",
     data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/vol_dans_char_2023/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*",
+    cluster: true,
+    clusterMaxZoom: 14, // Max zoom to cluster points on
+    clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
   });
 
   
 
 
   map.addLayer({
-    id: "vol_data_cercles",
-    type: "circle",
+    id: 'clusters',
+    type: 'circle',
     source: "vol_data",
   });
 
   map.addLayer({
-    id: "vol_data_cluster_count",
+    id: "clusters",
     type: "symbol",
     source: "vol_data",
     layout: {
