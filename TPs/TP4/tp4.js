@@ -11,34 +11,87 @@ map.on("load", () => {
 
   map.addSource("vol_data", {
     type: "geojson",
-    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/vol_dans_char_2023/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*",
+    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/2023_point_count/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*",
     cluster: true,
     clusterMaxZoom: 14, // Max zoom to cluster points on
     clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
   });
 
-  
-
-
-  map.addLayer({
+    map.addLayer({
     id: 'clusters',
     type: 'circle',
     source: "vol_data",
+    filter: ['has', 'point_count'],
+paint: {
+    // Use step expressions (https://maplibre.org/maplibre-style-spec/#expressions-step)
+    // with three steps to implement three types of circles:
+    //   * Blue, 20px circles when point count is less than 100
+    //   * Yellow, 30px circles when point count is between 100 and 750
+    //   * Pink, 40px circles when point count is greater than or equal to 750
+    'circle-color': [
+        'step',
+        ['get', 'point_count'],
+        '#000000',
+        2,
+        '#da9999',
+        5,
+        '#c76666',
+        10,
+        '#B53232',
+        25,
+        '#920000',
+        50,
+        '#610000',
+        100,
+        '#300000'
+    ],
+    'circle-radius': [
+        'step',
+        ['get', 'point_count'],
+        2,
+        2,
+        8,
+        5,
+        13,
+        10,
+        17,
+        25,
+        20,
+        50,
+        30,
+        100,
+        40
+      ],
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#300000'
+    },
+
   });
 
   map.addLayer({
-    id: "clusters",
-    type: "symbol",
-    source: "vol_data",
-    layout: {
-      "text-font": ["Arial Bold"],
-      "text-field": ["get", "point_count"],
-      "text-offset": [0, 0.1] // move the label vertically downwards slightly to improve centering
-    },
-    paint: {
-      "text-color": "white"
-    }
-  });
+      id: 'cluster-count',
+      type: 'symbol',
+      source: 'vol_data',
+      filter: ['has', 'point_count'],
+      layout: {
+          'text-field': '{point_count_abbreviated}',
+          'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+          'text-size': 12
+       }
+    });
+  
+    map.addLayer({
+      id: 'unclustered-point',
+      type: 'circle',
+      source: 'vol_data',
+      filter: ['!', ['has', 'point_count']],
+      paint: {
+          'circle-color': '#eccccc',
+          'circle-radius': 4,
+          'circle-stroke-width': 2,
+          'circle-stroke-color': '#300000'
+         }
+    });
 
   map.addSource("limites", {
     type: "geojson",
