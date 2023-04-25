@@ -1,10 +1,12 @@
+<!-- Déclaration du type de document <!DOCTYPE html>, ce qui indique au navigateur web le type de document qu'il va devoir afficher -->
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset='utf-8' />
+  <!-- Attribution d'un titre à la page -->
   <title>Ma carte Mapbox</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-
+  <!-- Balises link permettent d'associer la feuille de style mapbox-gl.css en plus du fichier tp4.css -->
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
   <link href='tp4.css' rel='stylesheet' />
 </head>
@@ -12,7 +14,9 @@
 
   <!-- Ici on insère un barre latérale de navigation -->
   <div class="sidenav">
+    <!-- Ici on insère un bouton qui servira à présenter la carte-->
     <a href="#" id="a-propos" >À propos de la carte</a>
+    <!-- Ici on insère deux boutons qui sont des hyperliens vers d'autres adresses url-->
     <a href="https://donnees.montreal.ca/dataset/actes-criminels" target="_blank">Sources des données</a>
     <a href="https://experience.arcgis.com/experience/ab592b83deb9409b9173a0eb02f5edec/" target="_blank">Version ArcGIS Online de la carte</a>
   </div>
@@ -27,23 +31,21 @@
       <h1>Vols dans (ou sur) véhicule à moteur</h1>
       <h2>Ville-Marie, Montréal, 2023</h2>
       
- 
-    </div>
+     </div>
    
     <!--Ici on injecte une div qui ne servira a injecter notre carte -->
     <div id="map"></div>
     
-    <!-- Élément pour afficher la jauge -->
+    <!-- Ici on injecte les éléments pour afficher la jauge -->
     <div id="jauge"></div>
       <div class="gauge__body">
         <div class="gauge__fill"></div>
         <div class="gauge__cover"></div>
     </div>
-  
-    
+      
   </div>
 
-
+  <!-- Ici on insère des scripts qui permettent d'associer la librairie mapbox-gl.js en plus du fichier tp4.js -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
   <script src='tp4.js'></script>
 

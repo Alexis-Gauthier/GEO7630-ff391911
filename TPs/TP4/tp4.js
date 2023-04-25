@@ -1,45 +1,58 @@
+// Ici on ajouter le 'accesToken' qui nous permet d'utiliser les cartes de Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWxleGlzLWdhdXRoaWVyIiwiYSI6ImNsZ2xoOGFqaDAzenozaG1lMXYybHkwbzMifQ.pT4pVZwsoYraglgAT3YLrg';
 var map = new mapboxgl.Map({
+  // On défénit l'ID de la div qui contiendra la carte comme étant 'map'
   container: 'map',
+  // On défénit le style de la carte comme étant 'mapbox://styles/mapbox/streets-v11'
   style: 'mapbox://styles/mapbox/streets-v11',
+  // On défénit le centre de la carte comme étant Montréal
   center: [-73.5673, 45.515],
+  // On défénit le niveau de zoom initial de la carte, soit zoom 12
   zoom: 12
 });
 
 map.on("load", () => {
-  // This code runs once the base style has finished loading.
+  // Ce code s'exécute une fois que le chargement du style de base est terminé.
 
+  // On ajoute une source de données de type 'geojson' qui contient les données des limites de la Ville de Montréal
   map.addSource("limites", {
     type: "geojson",
     data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/limite_ville_marie/FeatureServer/0/query?f=pgeojson&where=1=1",
   });
 
+  // On ajoute la couche des limites de l'arrondissement Ville-Marie et on la défini comme étant une ligne
   map.addLayer({
     id: "limites_line",
     type: "line",
     source: "limites",
   });
     
-  
+  // On ajoute une source de données de type 'geojson' qui contient les données de crimes de la Ville de Montréal
+  // On crée des clusters pour les crimes dans un rayon rapproché de 50 pixels
   map.addSource("vol_data", {
     type: "geojson",
     data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/2023_point_count/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*",
     cluster: true,
-    clusterMaxZoom: 14, // Max zoom to cluster points on
+    clusterMaxZoom: 20, // Max zoom to cluster points on
     clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
   });
 
+  // On ajoute la couche des crimes et on la défini comme étant un cercle
     map.addLayer({
     id: 'clusters',
     type: 'circle',
     source: "vol_data",
     filter: ['has', 'point_count'],
 paint: {
-    // Use step expressions (https://maplibre.org/maplibre-style-spec/#expressions-step)
+    // Expression en escalier
     // with three steps to implement three types of circles:
-    //   * Blue, 20px circles when point count is less than 100
-    //   * Yellow, 30px circles when point count is between 100 and 750
-    //   * Pink, 40px circles when point count is greater than or equal to 750
+    //   Couleur '#000000' pour les cercles uniques
+    //   Couleur '#da9999' et cercle de 8px pour les clusters ­>= 2 points
+    //   Couleur '#c76666' et cercle de 12px pour les clusters ­>= 5 points
+    //   Couleur '#B53232' et cercle de 17px pour les clusters ­>= 10 points
+    //   Couleur '#920000' et cercle de 20px pour les clusters ­>= 25 points
+    //   Couleur '#710000' et cercle de 30px pour les clusters ­>= 50 points
+    //   Couleur '#610000' et cercle de 40px pour les clusters ­>= 100 points
     'circle-color': [
         'step',
         ['get', 'point_count'],
@@ -74,13 +87,14 @@ paint: {
         100,
         40
       ],
+      // Ajout d'un contour noir de 2px à chaque cluster
       'circle-stroke-width': 2,
       'circle-stroke-color': '#300000'
     },
 
   });
 
-  map.addLayer({
+    // On ajoute le nombre de vols par cluster en définissant la taille de la police en fonction du nombre de vols en suivant les mêmes règles que pour la couleur et la grosseur des cercles
       id: 'cluster-count',
       type: 'symbol',
       source: 'vol_data',
@@ -97,7 +111,7 @@ paint: {
       }
     });
  
-
+    // On ajoute les cercles uniques pour les vols qui ne sont pas dans un cluster en leur donnant un cercle d'uun rayon de 4px et un contour noir de 2px
     map.addLayer({
       id: 'unclustered-point',
       type: 'circle',
@@ -111,7 +125,7 @@ paint: {
          }
     });
 
-    // inspect a cluster on click
+    // Permet d'agrandir la carte au niveau du cluster sélectionné
     map.on('click', 'clusters', function (e) {
         var features = map.queryRenderedFeatures(e.point, {
             layers: ['clusters']
@@ -170,40 +184,40 @@ paint: {
 
 });
 
- // Ajout d'un bouton clicable pour donner de l'information sur la carte
-  document.getElementById("a-propos").addEventListener("click", popup);
+  // Ajout d'un bouton clicable pour donner de l'information sur la carte
+    document.getElementById("a-propos").addEventListener("click", popup);
 
-  function popup() {
-    alert("Cette carte permet de visualiser où se concentre les vols dans (ou sur) véhicules à moteur dans l'arrondissement Ville-Marie depuis 2023. \n\nVous pouvez zoomer sur les données en cliquant tout simplement sur les cercles rouges. \n\nVous pouvez colorier les données en cliquant sur le bouton 'Colorier les données'. \n\nVous pouvez cliquer sur les points de données pour voir le nombre de points de collecte dans un secteur. \n\nVous pouvez cliquer sur le bouton 'Sources des données' afin d'être rediriger vers le site des données ouvertes de la Ville de Montréal \n\nCette carte a été créé dans la cadre du cours GEO7630 - Intégration et visualisation de données géographiques. \n\nElle a été réalisée par Alexandre-Raphaël Gauthier, étudiant au baccalauréat de géographie à l'Université du Québec à Montréal");
+    function popup() {
+      alert("Cette carte permet de visualiser où se concentre les vols dans (ou sur) véhicules à moteur dans l'arrondissement Ville-Marie depuis 2023. \n\nVous pouvez zoomer sur les données en cliquant tout simplement sur les cercles rouges. \n\nVous pouvez colorier les données en cliquant sur le bouton 'Colorier les données'. \n\nVous pouvez cliquer sur les points de données pour voir le nombre de points de collecte dans un secteur. \n\nVous pouvez cliquer sur le bouton 'Sources des données' afin d'être rediriger vers le site des données ouvertes de la Ville de Montréal \n\nCette carte a été créé dans la cadre du cours GEO7630 - Intégration et visualisation de données géographiques. \n\nElle a été réalisée par Alexandre-Raphaël Gauthier, étudiant au baccalauréat de géographie à l'Université du Québec à Montréal");
+    }
+
+
+  // Créer un élément pour afficher la jauge
+  var gaugeElement = document.createElement("div");
+  gaugeElement.setAttribute("point_count", "vol_data");
+  document.body.appendChild(gaugeElement);
+
+
+  // Fonction pour mettre à jour la jauge
+  function updateGauge() {
+    // Récupérer les limites de la carte
+    var bounds = map.getBounds();
+
+    // Compter le nombre de points visibles dans les limites de la carte
+    var visiblePoints = 0;
+    vol_data.forEach(function(point) {
+      if (bounds.contains([point.lat, point.lng])) {
+        visiblePoints++;
+      }
+    });
+
+    // Mettre à jour la jauge
+    gaugeElement.innerHTML = "Points visibles: " + visiblePoints;
+    document.getElementById("vol_data").innerHTML = visiblePoints;
+
   }
 
-
-// Créer un élément pour afficher la jauge
-var gaugeElement = document.createElement("div");
-gaugeElement.setAttribute("point_count", "vol_data");
-document.body.appendChild(gaugeElement);
-
-
-// Fonction pour mettre à jour la jauge
-function updateGauge() {
-  // Récupérer les limites de la carte
-  var bounds = map.getBounds();
-
-  // Compter le nombre de points visibles dans les limites de la carte
-  var visiblePoints = 0;
-  vol_data.forEach(function(point) {
-    if (bounds.contains([point.lat, point.lng])) {
-      visiblePoints++;
-    }
-  });
-
-  // Mettre à jour la jauge
-  gaugeElement.innerHTML = "Points visibles: " + visiblePoints;
-  document.getElementById("vol_data").innerHTML = visiblePoints;
-
-}
-
-// Appeler la fonction updateGauge à chaque fois que la carte est déplacée ou zoomée
-map.on("moveend zoomend", updateGauge);
+  // Appeler la fonction updateGauge à chaque fois que la carte est déplacée ou zoomée
+  map.on("moveend zoomend", updateGauge);
 
 
