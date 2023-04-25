@@ -25,6 +25,9 @@ map.on("load", () => {
     id: "limites_line",
     type: "line",
     source: "limites",
+    paint: {
+      "line-width": 4
+    }
   });
     
   // On ajoute une source de données de type 'geojson' qui contient les données de crimes de la Ville de Montréal
@@ -94,8 +97,9 @@ paint: {
 
   });
 
-    // On ajoute le nombre de vols par cluster en définissant la taille de la police en fonction du nombre de vols en suivant les mêmes règles que pour la couleur et la grosseur des cercles
-      id: 'cluster-count',
+    // On ajoute le nombre de vols par cluster en déterminant le grosseur de la police en fonction du nombre de vols suivant les mêmes paliers que pour la grosseur et la couleur des clusters
+      map.addLayer({  
+    id: 'cluster-count',
       type: 'symbol',
       source: 'vol_data',
       filter: ['has', 'point_count'],
@@ -111,7 +115,8 @@ paint: {
       }
     });
  
-    // On ajoute les cercles uniques pour les vols qui ne sont pas dans un cluster en leur donnant un cercle d'uun rayon de 4px et un contour noir de 2px
+
+    // On ajoute les cercles uniques pour les vols qui ne sont pas dans un cluster
     map.addLayer({
       id: 'unclustered-point',
       type: 'circle',
@@ -125,7 +130,7 @@ paint: {
          }
     });
 
-    // Permet d'agrandir la carte au niveau du cluster sélectionné
+    // Permet de zoomer sur les clusters sélectionnés
     map.on('click', 'clusters', function (e) {
         var features = map.queryRenderedFeatures(e.point, {
             layers: ['clusters']
@@ -184,40 +189,40 @@ paint: {
 
 });
 
-  // Ajout d'un bouton clicable pour donner de l'information sur la carte
-    document.getElementById("a-propos").addEventListener("click", popup);
+ // Ajout d'un bouton clicable pour donner de l'information sur la carte
+  document.getElementById("a-propos").addEventListener("click", popup);
 
-    function popup() {
-      alert("Cette carte permet de visualiser où se concentre les vols dans (ou sur) véhicules à moteur dans l'arrondissement Ville-Marie depuis 2023. \n\nVous pouvez zoomer sur les données en cliquant tout simplement sur les cercles rouges. \n\nVous pouvez colorier les données en cliquant sur le bouton 'Colorier les données'. \n\nVous pouvez cliquer sur les points de données pour voir le nombre de points de collecte dans un secteur. \n\nVous pouvez cliquer sur le bouton 'Sources des données' afin d'être rediriger vers le site des données ouvertes de la Ville de Montréal \n\nCette carte a été créé dans la cadre du cours GEO7630 - Intégration et visualisation de données géographiques. \n\nElle a été réalisée par Alexandre-Raphaël Gauthier, étudiant au baccalauréat de géographie à l'Université du Québec à Montréal");
-    }
-
-
-  // Créer un élément pour afficher la jauge
-  var gaugeElement = document.createElement("div");
-  gaugeElement.setAttribute("point_count", "vol_data");
-  document.body.appendChild(gaugeElement);
-
-
-  // Fonction pour mettre à jour la jauge
-  function updateGauge() {
-    // Récupérer les limites de la carte
-    var bounds = map.getBounds();
-
-    // Compter le nombre de points visibles dans les limites de la carte
-    var visiblePoints = 0;
-    vol_data.forEach(function(point) {
-      if (bounds.contains([point.lat, point.lng])) {
-        visiblePoints++;
-      }
-    });
-
-    // Mettre à jour la jauge
-    gaugeElement.innerHTML = "Points visibles: " + visiblePoints;
-    document.getElementById("vol_data").innerHTML = visiblePoints;
-
+  function popup() {
+    alert("Cette carte permet de visualiser où se concentre les vols dans (ou sur) véhicules à moteur dans l'arrondissement Ville-Marie depuis 2023. \n\nVous pouvez zoomer sur les données en cliquant tout simplement sur les cercles rouges. \n\nVous pouvez colorier les données en cliquant sur le bouton 'Colorier les données'. \n\nVous pouvez cliquer sur les points de données pour voir le nombre de points de collecte dans un secteur. \n\nVous pouvez cliquer sur le bouton 'Sources des données' afin d'être rediriger vers le site des données ouvertes de la Ville de Montréal \n\nCette carte a été créé dans la cadre du cours GEO7630 - Intégration et visualisation de données géographiques. \n\nElle a été réalisée par Alexandre-Raphaël Gauthier, étudiant au baccalauréat de géographie à l'Université du Québec à Montréal");
   }
 
-  // Appeler la fonction updateGauge à chaque fois que la carte est déplacée ou zoomée
-  map.on("moveend zoomend", updateGauge);
+
+// Créer un élément pour afficher la jauge
+var gaugeElement = document.createElement("div");
+gaugeElement.setAttribute("point_count", "vol_data");
+document.body.appendChild(gaugeElement);
+
+
+// Fonction pour mettre à jour la jauge
+function updateGauge() {
+  // Récupérer les limites de la carte
+  var bounds = map.getBounds();
+
+  // Compter le nombre de points visibles dans les limites de la carte
+  var visiblePoints = 0;
+  vol_data.forEach(function(point) {
+    if (bounds.contains([point.lat, point.lng])) {
+      visiblePoints++;
+    }
+  });
+
+  // Mettre à jour la jauge
+  gaugeElement.innerHTML = "Points visibles: " + visiblePoints;
+  document.getElementById("vol_data").innerHTML = visiblePoints;
+
+}
+
+// Appeler la fonction updateGauge à chaque fois que la carte est déplacée ou zoomée
+map.on("moveend zoomend", updateGauge);
 
 
