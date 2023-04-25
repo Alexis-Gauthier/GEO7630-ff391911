@@ -3,7 +3,7 @@ var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
   center: [-73.5673, 45.515],
-  zoom: 12.5
+  zoom: 12
 });
 
 map.on("load", () => {
@@ -130,32 +130,47 @@ paint: {
        );
   });
 
+  // 2.5D à travailler, ne s'saffiche pas (manque peut-être """map.on('load', function () { )
+  map.addLayer(
+    {
+    'id': '3d-buildings',
+    'source': 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/batiment_elevation_json/FeatureServer0/query?f=pgeojson&where=1=1&outFields=*',
+    'source-layer': 'building',
+    'filter': ['==', 'extrude', 'true'],
+    'type': 'fill-extrusion',
+    'minzoom': 15,
+    'paint': {
+    'fill-extrusion-color': '#aaa',
+     
+    // use an 'interpolate' expression to add a smooth transition effect to the
+    // buildings as the user zooms in
+    'fill-extrusion-height': [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    15,
+    0,
+    15.05,
+    ['get', 'height']
+    ],
+    'fill-extrusion-base': [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    15,
+    0,
+    15.05,
+    ['get', 'min_height']
+    ],
+    'fill-extrusion-opacity': 0.6
+    }
+    },
+    labelLayerId
+    );
 
 });
 
-      
-  // On crée la fonction de zoom sur les données
-  function zoomerDonnees() {
-    var features = map.querySourceFeatures('data_vol', { sourceLayer: 'polygones' });
-    var bounds = features.reduce(function(bounds, feature) {
-      return bounds.extend(turf.bbox(feature));
-    }, new mapboxgl.LngLatBounds());
-    map.fitBounds(bounds, { padding: 20 });
-  }
-  
-  // On crée la fonction de colorisation des données
-  function colorierDonnees() {
-    var layer = map.getLayer('polygones');
-    var colors = ['#ffeda0', '#feb24c', '#f03b20'];
-    var stops = colors.map(function(color, i) {
-      return [i + 1, color];
-    });
-    map.setPaintProperty(layer.id, 'fill-color', {
-      property: 'niveau',
-      stops: stops
-    });
-  }
-
+ // Ajout d'un bouton clicable pour donner de l'information sur la carte
   document.getElementById("a-propos").addEventListener("click", popup);
 
   function popup() {
@@ -163,6 +178,32 @@ paint: {
   }
 
 
-// On lie le bouton de zoom à la fonction de zoom sur les données
-document.getElementById('zoomto').addEventListener('click', zoomerDonnees);
+// Créer un élément pour afficher la jauge
+var gaugeElement = document.createElement("div");
+gaugeElement.setAttribute("point_count", "vol_data");
+document.body.appendChild(gaugeElement);
+
+
+// Fonction pour mettre à jour la jauge
+function updateGauge() {
+  // Récupérer les limites de la carte
+  var bounds = map.getBounds();
+
+  // Compter le nombre de points visibles dans les limites de la carte
+  var visiblePoints = 0;
+  vol_data.forEach(function(point) {
+    if (bounds.contains([point.lat, point.lng])) {
+      visiblePoints++;
+    }
+  });
+
+  // Mettre à jour la jauge
+  gaugeElement.innerHTML = "Points visibles: " + visiblePoints;
+  document.getElementById("vol_data").innerHTML = visiblePoints;
+
+}
+
+// Appeler la fonction updateGauge à chaque fois que la carte est déplacée ou zoomée
+map.on("moveend zoomend", updateGauge);
+
 
