@@ -26,22 +26,29 @@
       <h1>Vols dans (ou sur) véhicule à moteur</h1>
       <h2>Ville-Marie, Montréal, 2023</h2>
       
-
       <!--Ici on injecte une div qui servira de conteneur enfant pour le bouton de zoom -->
       <div id=bouton2>
         <button id=zoomto>Zoomer sur les données</button>
       </div>
 
-      
-
     </div>
+   
+    <!--Ici on injecte une div qui ne servira a injecter notre carte -->
+    <div id='map'></div>
+    
 
-      <!--Ici on injecte une div qui ne servira a injecter notre carte -->
-      <div id='map'></div>
     
   </div>
 
-  
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+<ul id="mois_annee">
+  <li><a href="#">Adele</a></li>
+  <li><a href="#">Agnes</a></li>
+
+  <li><a href="#">Billy</a></li>
+  <li><a href="#">Bob</a></li>
+</ul>
 
 
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
