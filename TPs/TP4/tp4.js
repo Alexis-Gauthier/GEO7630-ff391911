@@ -9,6 +9,18 @@ var map = new mapboxgl.Map({
 map.on("load", () => {
   // This code runs once the base style has finished loading.
 
+  map.addSource("limites", {
+    type: "geojson",
+    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/limite_ville_marie/FeatureServer/0/query?f=pgeojson&where=1=1",
+  });
+
+  map.addLayer({
+    id: "limites_line",
+    type: "line",
+    source: "limites",
+  });
+    
+  
   map.addSource("vol_data", {
     type: "geojson",
     data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/2023_point_count/FeatureServer/0/query?f=pgeojson&where=1=1&outFields=*",
@@ -41,9 +53,9 @@ paint: {
         25,
         '#920000',
         50,
-        '#610000',
+        '#710000',
         100,
-        '#300000'
+        '#610000'
     ],
     'circle-radius': [
         'step',
@@ -52,7 +64,7 @@ paint: {
         2,
         8,
         5,
-        13,
+        12,
         10,
         17,
         25,
@@ -76,10 +88,16 @@ paint: {
       layout: {
           'text-field': '{point_count_abbreviated}',
           'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-          'text-size': 12
-       }
+          'text-size': [
+            'case',
+              ['>=', ['get', 'point_count'], 50],  // Si le point_count est supérieur ou égal à 50
+              25,                                  // Utiliser une taille de police de 25
+              17                                   // Sinon, utiliser une taille de police de 17
+            ]
+      }
     });
-  
+ 
+
     map.addLayer({
       id: 'unclustered-point',
       type: 'circle',
@@ -93,16 +111,25 @@ paint: {
          }
     });
 
-  map.addSource("limites", {
-    type: "geojson",
-    data: "https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/limite_ville_marie/FeatureServer/0/query?f=pgeojson&where=1=1",
+    // inspect a cluster on click
+    map.on('click', 'clusters', function (e) {
+        var features = map.queryRenderedFeatures(e.point, {
+            layers: ['clusters']
+        });
+        var clusterId = features[0].properties.cluster_id;
+        map.getSource('vol_data').getClusterExpansionZoom(
+            clusterId,
+            function (err, zoom) {
+                if (err) return;
+                
+                map.easeTo({
+                    center: features[0].geometry.coordinates,
+                    zoom: zoom
+                });
+           }
+       );
   });
 
-  map.addLayer({
-    id: "limites_line",
-    type: "line",
-    source: "limites",
-  });
 
 });
 
@@ -129,7 +156,11 @@ paint: {
     });
   }
 
+  document.getElementById("a-propos").addEventListener("click", popup);
 
+  function popup() {
+    alert("Cette carte permet de visualiser où se concentre les vols dans (ou sur) véhicules à moteur dans l'arrondissement Ville-Marie depuis 2023. \n\nVous pouvez zoomer sur les données en cliquant tout simplement sur les cercles rouges. \n\nVous pouvez colorier les données en cliquant sur le bouton 'Colorier les données'. \n\nVous pouvez cliquer sur les points de données pour voir le nombre de points de collecte dans un secteur. \n\nVous pouvez cliquer sur le bouton 'Sources des données' afin d'être rediriger vers le site des données ouvertes de la Ville de Montréal \n\nCette carte a été créé dans la cadre du cours GEO7630 - Intégration et visualisation de données géographiques. \n\nElle a été réalisée par Alexandre-Raphaël Gauthier, étudiant au baccalauréat de géographie à l'Université du Québec à Montréal");
+  }
 
 
 // On lie le bouton de zoom à la fonction de zoom sur les données
