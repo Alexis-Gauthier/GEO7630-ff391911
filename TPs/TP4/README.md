@@ -62,12 +62,12 @@ Une autre couche est ajoutée à la carte en utilisant la méthode addLayer de l
 Section CSS : 
 
 - Centrer le texte du body en utilisant la propriété "text-align" et en lui donnant la valeur "center".
-- Centrer le bloc de contenu (#content) en utilisant la propriété "margin" et en lui donnant la valeur "0 auto", qui centre horizontalement le bloc en fonction de la - - - taille de la fenêtre.
+- Centrer le bloc de contenu (#content) en utilisant la propriété "margin" et en lui donnant la valeur "0 auto", qui centre horizontalement le bloc en fonction de la taille de la fenêtre.
 - Appliquer un dégradé linéaire (#333 à 20%, transparent à 25%, transparent à 100%, #666 à 100%) à la partie supérieure du menu (#menu).
 - Appliquer un style inline-block aux éléments de liste liens (#menu li) pour les aligner sur la même ligne horizontale et ajouter un padding de 10px.
-- Appliquer une couleur de texte blanche (#FFF) aux liens (#menu a).
+- Appliquer la couleur blanche (#FFF) au texte des liens (#menu a).
 - Ajouter un padding de 20px à la boîte (#boite).
-- Appliquer une couleur de texte blanche (#FFF) à tous les éléments enfants de #boite, sauf le titre h1 (#boite :not(h1)).
+- Appliquer la couleur blanche (#FFF) au texte de tous les éléments enfants de la #boite, sauf pour le titre h1 (#boite :not(h1)).
 - Appliquer une couleur de texte rouge (#FF0000) au titre h1 de #boite.
 - Appliquer une couleur de texte noire (#000) au bouton (#boite button).
 - Définir une position relative pour la carte (#map), avec une largeur de 85% et une hauteur de 500px, centrée horizontalement grâce aux propriétés left: 15% et right: 15%.
@@ -77,3 +77,7 @@ Section CSS :
 - Ajouter une fonction de survol des liens de navigation (#sidenav a:hover), qui modifie la couleur du texte en blanc (#FFF).
 - Ajouter une marge de gauche au contenu principal de la page (#main), équivalente à la largeur de la barre de navigation latérale (#sidenav), en utilisant la propriété "margin-left".
 - Ajouter un élément de jauge avec une largeur de 200px, une couleur de fond rouge (#e73434) et une bordure de 1px solide (#333131) (#jauge).
+- Définir le style pour le corps de la jauge avec largeur de 100% et hauteur de 0, remplissage de 50% en bas, fond gris, bords arrondis avec un rayon de 100% pour le coin supérieur gauche et droit.
+- Définir le style pour le remplissage de la jauge avec position en haut de la forme circulaire, largeur égale à celle de la forme parente, hauteur de 100%, fond vert et rotation de 0,25 tour pour créer un effet de remplissage.
+- Définir le style pour la couverture de la jauge avec taille de 75% de la largeur de la forme parente, hauteur de 150%, positionnement au centre de la forme parente avec décalage à gauche de 50%, centrage de texte, forme circulaire avec un rayon de 50% et fond blanc.
+- Ajouter un style pour aligner verticalement et horizontalement le texte à l'intérieur de la couverture de la jauge, avec remplissage de 25% pour le bas et dimensionnement de la boîte de texte en fonction de son contenu. - - - - Définir le modèle de boîte sur "border-box".
